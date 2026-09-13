@@ -196,8 +196,8 @@ function Login() {
 
             <div className="flex items-center gap-3">
 
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-cyan-400/[0.08] text-sm">
-                🔐
+              <div className="flex h-9 w-9 items-center justify-center rounded-lg border border-cyan-400/15 bg-cyan-400/[0.06]">
+                <span className="h-2 w-2 rounded-full bg-cyan-400" />
               </div>
 
               <div>
@@ -265,7 +265,6 @@ function Login() {
                     );
                     setError("");
                   }}
-                  placeholder="admin@example.com"
                   autoComplete="email"
                   required
                   className="login-input"
@@ -304,7 +303,6 @@ function Login() {
                       );
                       setError("");
                     }}
-                    placeholder="Enter your password"
                     autoComplete="current-password"
                     required
                     className="login-input pr-[82px]"
