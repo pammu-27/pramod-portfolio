@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Disallow: /admin
+Disallow: /login
+
+Sitemap: https://pramod-portfolio.pages.dev/sitemap.xml
