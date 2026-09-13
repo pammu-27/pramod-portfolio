@@ -1,0 +1,698 @@
+@import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+
+/* =========================================================
+   TAILWIND DARK MODE
+   Uses the portfolio's data-theme attribute
+========================================================= */
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+
+/* =========================================================
+   DESIGN TOKENS
+========================================================= */
+
+:root {
+  --bg: #f4f6f8;
+  --bg-secondary: #eef1f5;
+
+  --text: #111827;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+
+  --glass: rgba(255, 255, 255, 0.72);
+  --glass-strong: rgba(255, 255, 255, 0.88);
+  --glass-border: rgba(15, 23, 42, 0.10);
+
+  --shadow:
+    0 20px 60px rgba(15, 23, 42, 0.07);
+
+  --shadow-hover:
+    0 30px 80px rgba(15, 23, 42, 0.12);
+
+  --accent: #2563eb;
+  --accent-secondary: #4f46e5;
+  --accent-purple: #7c3aed;
+
+  --nav-bg: rgba(255, 255, 255, 0.78);
+}
+
+
+/* =========================================================
+   DARK THEME
+========================================================= */
+
+[data-theme="dark"] {
+  --bg: #030712;
+  --bg-secondary: #0f172a;
+
+  --text: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+
+  --glass: rgba(15, 23, 42, 0.48);
+  --glass-strong: rgba(15, 23, 42, 0.68);
+  --glass-border: rgba(148, 163, 184, 0.14);
+
+  --shadow:
+    0 20px 60px rgba(0, 0, 0, 0.35);
+
+  --shadow-hover:
+    0 30px 90px rgba(0, 0, 0, 0.50);
+
+  --accent: #22d3ee;
+  --accent-secondary: #818cf8;
+  --accent-purple: #a78bfa;
+
+  --nav-bg: rgba(15, 23, 42, 0.55);
+}
+
+
+/* =========================================================
+   BASE
+========================================================= */
+
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+
+  background:
+    radial-gradient(
+      circle at 10% 10%,
+      rgba(37, 99, 235, 0.07),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 90% 20%,
+      rgba(79, 70, 229, 0.07),
+      transparent 30%
+    ),
+    var(--bg);
+
+  color: var(--text);
+
+  font-family:
+    "Inter",
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  transition:
+    background-color 0.35s ease,
+    color 0.35s ease;
+}
+
+
+/* =========================================================
+   SELECTION
+========================================================= */
+
+::selection {
+  background: rgba(37, 99, 235, 0.20);
+  color: var(--text);
+}
+
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    var(--accent),
+    var(--accent-secondary)
+  );
+
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  opacity: 0.85;
+}
+
+
+/* =========================================================
+   LINKS
+========================================================= */
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+
+/* =========================================================
+   FORM ELEMENTS
+========================================================= */
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+input,
+textarea,
+select {
+  color: var(--text);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--text-muted);
+}
+
+
+/* =========================================================
+   GLASS
+========================================================= */
+
+.glass {
+  background: var(--glass);
+
+  border: 1px solid var(--glass-border);
+
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+
+  box-shadow: var(--shadow);
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease,
+    background 0.35s ease;
+}
+
+.glass:hover {
+  box-shadow: var(--shadow-hover);
+}
+
+
+/* =========================================================
+   STRONG GLASS
+========================================================= */
+
+.glass-strong {
+  background: var(--glass-strong);
+
+  border: 1px solid var(--glass-border);
+
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+
+  box-shadow: var(--shadow);
+}
+
+
+/* =========================================================
+   GRADIENT TEXT
+========================================================= */
+
+.gradient-text {
+  background: linear-gradient(
+    135deg,
+    var(--accent),
+    var(--accent-secondary),
+    var(--accent-purple)
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  color: transparent;
+}
+
+
+/* =========================================================
+   GRADIENT BORDER
+========================================================= */
+
+.gradient-border {
+  position: relative;
+}
+
+.gradient-border::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  padding: 1px;
+
+  border-radius: inherit;
+
+  background: linear-gradient(
+    135deg,
+    rgba(37, 99, 235, 0.45),
+    rgba(79, 70, 229, 0.30),
+    rgba(124, 58, 237, 0.20)
+  );
+
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   FLOATING BACKGROUND GLOWS
+========================================================= */
+
+.glow {
+  position: absolute;
+
+  border-radius: 9999px;
+
+  filter: blur(80px);
+
+  pointer-events: none;
+
+  opacity: 0.25;
+
+  animation:
+    floatGlow 12s ease-in-out infinite;
+}
+
+.glow-cyan {
+  background: #2563eb;
+}
+
+.glow-purple {
+  background: #7c3aed;
+  animation-delay: -4s;
+}
+
+.glow-blue {
+  background: #4f46e5;
+  animation-delay: -8s;
+}
+
+
+/* =========================================================
+   GLOW ANIMATION
+========================================================= */
+
+@keyframes floatGlow {
+  0%,
+  100% {
+    transform:
+      translate3d(0, 0, 0)
+      scale(1);
+  }
+
+  50% {
+    transform:
+      translate3d(0, -25px, 0)
+      scale(1.08);
+  }
+}
+
+
+/* =========================================================
+   REVEAL ANIMATION
+========================================================= */
+
+.reveal {
+  animation:
+    revealUp 0.7s ease both;
+}
+
+@keyframes revealUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* =========================================================
+   BUTTON GLOW
+========================================================= */
+
+.glow-button {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.glow-button:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 12px 35px rgba(37, 99, 235, 0.20);
+}
+
+
+/* =========================================================
+   LIGHT MODE — EXPERIENCE
+========================================================= */
+
+html[data-theme="light"] #experience {
+  background: #f7f8fa !important;
+  color: #0f172a !important;
+
+  border-color:
+    rgba(15, 23, 42, 0.10) !important;
+}
+
+html[data-theme="light"] #experience h2,
+html[data-theme="light"] #experience h3 {
+  color: #0f172a !important;
+}
+
+html[data-theme="light"] #experience h4 {
+  color: #0f172a !important;
+}
+
+html[data-theme="light"] #experience p {
+  color: #64748b;
+}
+
+html[data-theme="light"] #experience .text-white {
+  color: #0f172a !important;
+}
+
+html[data-theme="light"] #experience .text-slate-200 {
+  color: #334155 !important;
+}
+
+html[data-theme="light"] #experience .text-slate-300 {
+  color: #475569 !important;
+}
+
+html[data-theme="light"] #experience .text-slate-400 {
+  color: #64748b !important;
+}
+
+html[data-theme="light"] #experience .text-slate-500 {
+  color: #64748b !important;
+}
+
+html[data-theme="light"] #experience .text-slate-600 {
+  color: #94a3b8 !important;
+}
+
+html[data-theme="light"] #experience article {
+  background: #ffffff !important;
+
+  border-color:
+    rgba(15, 23, 42, 0.10) !important;
+}
+
+html[data-theme="light"] #experience article > div {
+  border-color:
+    rgba(15, 23, 42, 0.10) !important;
+}
+
+html[data-theme="light"] #experience .bg-white\/\[0\.03\] {
+  background: #ffffff !important;
+}
+
+html[data-theme="light"] #experience .border-white\/10 {
+  border-color:
+    rgba(15, 23, 42, 0.10) !important;
+}
+
+
+/* =========================================================
+   LIGHT MODE — SKILLS
+========================================================= */
+
+html[data-theme="light"] #skills {
+  color: #111827;
+}
+
+html[data-theme="light"] #skills h2 {
+  color: #111827 !important;
+}
+
+html[data-theme="light"] #skills h3 {
+  color: #1e293b !important;
+}
+
+html[data-theme="light"] #skills h4 {
+  color: #111827 !important;
+}
+
+html[data-theme="light"] #skills p {
+  color: #64748b;
+}
+
+html[data-theme="light"] #skills .text-white {
+  color: #111827 !important;
+}
+
+html[data-theme="light"] #skills .text-slate-200 {
+  color: #334155 !important;
+}
+
+html[data-theme="light"] #skills .text-slate-400 {
+  color: #64748b !important;
+}
+
+html[data-theme="light"] #skills .text-slate-500 {
+  color: #64748b !important;
+}
+
+html[data-theme="light"] #skills .text-slate-600 {
+  color: #94a3b8 !important;
+}
+
+html[data-theme="light"] #skills .bg-white\/\[0\.025\] {
+  background: rgba(255, 255, 255, 0.72) !important;
+}
+
+html[data-theme="light"] #skills .bg-white\/\[0\.045\] {
+  background: rgba(255, 255, 255, 0.92) !important;
+}
+
+html[data-theme="light"] #skills .border-white\/\[0\.08\] {
+  border-color:
+    rgba(15, 23, 42, 0.09) !important;
+}
+
+html[data-theme="light"] #skills .bg-black\/20 {
+  background:
+    rgba(15, 23, 42, 0.035) !important;
+}
+
+html[data-theme="light"] #skills .bg-white\/\[0\.07\] {
+  background:
+    rgba(15, 23, 42, 0.08) !important;
+}
+
+html[data-theme="light"] #skills .border-white\/\[0\.07\] {
+  border-color:
+    rgba(15, 23, 42, 0.08) !important;
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* =========================================================
+   ADMIN INPUT SYSTEM
+   ========================================================= */
+
+.admin-input {
+  width: 100% !important;
+  min-height: 44px !important;
+
+  box-sizing: border-box !important;
+
+  appearance: none !important;
+  -webkit-appearance: none !important;
+
+  padding: 11px 14px !important;
+
+  border: 1px solid rgba(148, 163, 184, 0.14) !important;
+  border-radius: 10px !important;
+
+  background: #050a16 !important;
+
+  /* IMPORTANT: force actual input text */
+  color: #f8fafc !important;
+  -webkit-text-fill-color: #f8fafc !important;
+
+  caret-color: #22d3ee !important;
+
+  outline: none !important;
+
+  font-family: inherit !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease !important;
+}
+
+
+/* =========================================================
+   PLACEHOLDER
+   ========================================================= */
+
+.admin-input::placeholder {
+  color: #64748b !important;
+  -webkit-text-fill-color: #64748b !important;
+  opacity: 1 !important;
+}
+
+
+/* =========================================================
+   HOVER
+   ========================================================= */
+
+.admin-input:hover {
+  border-color: rgba(148, 163, 184, 0.25) !important;
+  background: #070d1a !important;
+}
+
+
+/* =========================================================
+   FOCUS
+   ========================================================= */
+
+.admin-input:focus {
+  border-color: rgba(34, 211, 238, 0.55) !important;
+
+  background: #060c18 !important;
+
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+
+  box-shadow:
+    0 0 0 3px rgba(34, 211, 238, 0.08),
+    0 8px 24px rgba(0, 0, 0, 0.18) !important;
+}
+
+
+/* =========================================================
+   TEXTAREA
+   ========================================================= */
+
+textarea.admin-input {
+  min-height: 120px !important;
+  resize: vertical !important;
+
+  color: #f8fafc !important;
+  -webkit-text-fill-color: #f8fafc !important;
+}
+
+
+/* =========================================================
+   NUMBER INPUT
+   ========================================================= */
+
+input.admin-input[type="number"] {
+  color: #f8fafc !important;
+  -webkit-text-fill-color: #f8fafc !important;
+}
+
+
+/* =========================================================
+   DATE INPUT
+   ========================================================= */
+
+input.admin-input[type="date"] {
+  color: #f8fafc !important;
+  -webkit-text-fill-color: #f8fafc !important;
+
+  color-scheme: dark !important;
+}
+
+
+/* =========================================================
+   URL / TEXT / EMAIL
+   ========================================================= */
+
+input.admin-input[type="text"],
+input.admin-input[type="url"],
+input.admin-input[type="email"],
+input.admin-input[type="password"] {
+  color: #f8fafc !important;
+  -webkit-text-fill-color: #f8fafc !important;
+}
+
+
+/* =========================================================
+   AUTOFILL
+   ========================================================= */
+
+.admin-input:-webkit-autofill,
+.admin-input:-webkit-autofill:hover,
+.admin-input:-webkit-autofill:focus,
+.admin-input:-webkit-autofill:active {
+  -webkit-text-fill-color: #f8fafc !important;
+
+  caret-color: #22d3ee !important;
+
+  box-shadow:
+    0 0 0 1000px #050a16 inset !important;
+
+  border-color:
+    rgba(148, 163, 184, 0.14) !important;
+}
+
+
+/* =========================================================
+   DISABLED
+   ========================================================= */
+
+.admin-input:disabled {
+  opacity: 0.55 !important;
+  cursor: not-allowed !important;
+}
+
+section[id] {
+  scroll-margin-top: 110px;
+}
